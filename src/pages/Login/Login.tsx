@@ -14,8 +14,9 @@ const Login = () => {
 
         try {
             const response = await login({email, password});
-            console.log("JWT token: ", response.token);
-            console.log("User: ", response.user);   
+            // console.log("Token : ", response);
+            const token = response.token;
+            localStorage.setItem("token", token);
         } catch (err: any) {
             setError(err.message || "Login failed") 
         } finally {
@@ -52,6 +53,10 @@ const Login = () => {
                 <button type="submit" disabled={loading}>
                     {loading ? "Logging in..." : "Login"}
                 </button>
+
+                <h1 className="text-3xl font-bold text-blue-600">
+                    Tailwind v4 Working
+                </h1>
             </form>
         </div>   
     );
